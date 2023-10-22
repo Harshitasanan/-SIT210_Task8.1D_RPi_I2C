@@ -10,13 +10,13 @@ try:
         data = bus.read_i2c_block_data(Address, 0x23, 2)
         intensity = int.from_bytes(data, "big", signed=False)
         
-        if intensity < 5:
+        if intensity < 9:
             status = 'TOO DARK'
-        elif intensity < 20 and intensity >= 5:
+        elif intensity < 20 and intensity >= 9:
             status ='DARK'
-        elif intensity < 120 and intensity >=20:
+        elif intensity < 130 and intensity >=20:
             status = 'MEDIUM'
-        elif intensity < 700 and intensity >=120:
+        elif intensity < 600 and intensity >=130:
             status ='BRIGHT'
         else:
             status ='TOO BRIGHT'
